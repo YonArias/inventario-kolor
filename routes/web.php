@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Sale_detail;
 use App\Models\Order_detail;
@@ -33,12 +35,19 @@ Route::get('/dashboard', function () {
     $products = Product::get();
     $users = User::get();
     $detail_sales = Sale_detail::get();
+    
+    $user = Auth::user();
+    $user->update([
+        'state' => 1
+    ]);
+
     return view('dashboard')->with([
         'sales' => $sales,
         'products' => $products,
         'users' => $users,
         'details' => $detail_sales
     ]);
+    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // RUTAS NUEVAS PARA LOS NUEVAS SECCIONES
@@ -123,10 +132,13 @@ Route::controller(ReportsController::class)->group(function () {
     Route::post('/reports', "store");
 })->middleware(['auth', 'verified'])->name('reports');
 
-Route::get('/users', function () {
-    return view('users');
+Route::controller(UsersController::class)->group(function () {
+    Route::get('/users', "index");
+    Route::get('/users/create', "create");
+    Route::get('/users/{table}', "show");
+    Route::post('/users', "store");
+    Route::delete('/users/{user}', "destroy");
 })->middleware(['auth', 'verified'])->name('users');
-// FINISH
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
