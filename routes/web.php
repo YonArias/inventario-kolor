@@ -86,7 +86,7 @@ Route::controller(ProductsController::class)->group(function () {
     Route::post('/warehouse', "store");
     Route::get('/warehouse/{id}/edit', "edit");
     Route::patch('/warehouse/{id}', "update");
-    Route::delete('/warehouse/{id}', "destroy");
+    Route::delete('/warehouse/delete/{product}', "destroy");
 })->middleware(['auth', 'verified'])->name('warehouse');
 
 Route::controller(OrdersController::class)->group(function () {
