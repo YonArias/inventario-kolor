@@ -130,15 +130,36 @@ class ProductsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $marks = Mark::get();
+        $categories = Category::get();
+        $product = Product::find($id);
+
+        return view('products_edit')->with([
+            'product' => $product,
+            'marks' => $marks,
+            'categories' => $categories
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $category = Category::find($request->category);
+        $mark = Mark::find($request->mark);
+
+        $name = $category->name . ' ' . $request->model . ' ' . $mark->name;
+        
+        $product->update([
+            'name' => $name,
+            'model' => $request->model,
+            'description' => $request->description,
+            'price' => $request->price,
+            'mark' => $request->mark,
+            'category' => $request->category
+        ]);
+        return redirect('/warehouse');
     }
 
     /**

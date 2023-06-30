@@ -117,6 +117,6 @@ class OrdersController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect('/dashboard');
+        return redirect('/reports/2');
     }
 }

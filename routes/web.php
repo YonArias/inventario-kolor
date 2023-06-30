@@ -85,7 +85,7 @@ Route::controller(ProductsController::class)->group(function () {
     Route::get('/warehouse/create/{id}', "create");
     Route::post('/warehouse', "store");
     Route::get('/warehouse/{id}/edit', "edit");
-    Route::patch('/warehouse/{id}', "update");
+    Route::patch('/warehouse/{product}', "update");
     Route::delete('/warehouse/delete/{product}', "destroy");
 })->middleware(['auth', 'verified'])->name('warehouse');
 
@@ -128,8 +128,12 @@ Route::controller(SuppliersController::class)->group(function () {
 Route::controller(ReportsController::class)->group(function () {
     Route::get('/reports', "index");
     Route::get('/reports/create', "create");
-    Route::get('/reports/{table}', "show");
+    Route::get('/reports/{id}', "show");
     Route::post('/reports', "store");
+    Route::get('/reports/{id}/viewSale', "viewSale");
+    Route::get('/reports/{id}/viewOrder', "viewOrder");
+    Route::patch('/reports/{product}', "update");
+    Route::delete('/reports/{id}', "destroy");
 })->middleware(['auth', 'verified'])->name('reports');
 
 Route::controller(UsersController::class)->group(function () {

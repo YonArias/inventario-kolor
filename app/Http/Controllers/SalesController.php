@@ -107,6 +107,6 @@ class SalesController extends Controller
     public function destroy(Sale $sale)
     {
         $sale->delete();
-        return redirect('/dashboard');
+        return redirect('/reports/1');
     }
 }

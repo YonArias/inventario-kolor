@@ -9,6 +9,9 @@ use App\Models\Order;
 use App\Models\Order_detail;
 use App\Models\Supplier;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Mark;
+use App\Models\Category;
 
 class ReportsController extends Controller
 {
@@ -63,17 +66,25 @@ class ReportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function viewSale(string $id)
     {
-        //
+        
+    }
+    /** 
+     * Show the form for editing the specified resource.
+     * 
+    */
+    public function viewOrder(string $id)
+    {
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+
     }
 
     /**

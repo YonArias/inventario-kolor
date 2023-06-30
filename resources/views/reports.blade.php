@@ -86,11 +86,16 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">
-                                    <form action="/sales/{{ $sale->id }}" method="POST">
+                                <td class="px-6 py-4 flex gap-4 items-center">
+                                    <a href="/reports/{{ $sale->id }}/viewSale">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-green-500">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </a>
+                                    <form action="/sales/{{ $sale->id }}" method="POST" class="">
                                         @method('DELETE')
                                         @csrf
-                                        <button onclick="return confirm(' ¿Seguro que quieres eliminar la venta? ')" type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                        <button onclick="return confirm(' ¿Seguro que quieres eliminar la venta? ')" type="submit" class="text-red-900 bg-white border border-red-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-gray-200 hover:bg-red-100 focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-red-800 dark:text-white dark:border-red-600 dark:hover:bg-red-700 dark:hover:border-red-600 dark:focus:ring-red-700">
                                             Eliminar
                                         </button>
                                     </form>
@@ -160,11 +165,16 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">
-                                    <form action="/warehouse/orders/{{ $sale->id }}" method="POST">
+                                <td class="px-6 py-4 flex items-center gap-4">
+                                    <a href="/reports/{{ $order->id }}/viewOrder">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-green-500">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </a>
+                                    <form action="/warehouse/orders/{{ $order->id }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button onclick="return confirm(' ¿Seguro que quieres eliminar el orden de compra? ')" type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                        <button onclick="return confirm(' ¿Seguro que quieres eliminar el orden de compra? ')" type="submit" class="text-red-900 bg-white border border-red-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-gray-200 hover:bg-red-100 focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-red-800 dark:text-white dark:border-red-600 dark:hover:bg-red-700 dark:hover:border-red-600 dark:focus:ring-red-700">
                                             Eliminar
                                         </button>
                                     </form>
