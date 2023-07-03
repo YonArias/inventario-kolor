@@ -83,8 +83,8 @@ class ProductsController extends Controller
         
         // Product::create($request->all());
         Product::create([
-            'name' => $request->input('name'),
-            'model' => $request->input('model'),
+            'name' => strtoupper($request->input('name')),
+            'model' => strtoupper($request->input('model')),
             'stock' => $request->input('amount'),
             'category_id' => $valor1,
             'price' => $request->input('price'),

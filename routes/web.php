@@ -130,8 +130,8 @@ Route::controller(ReportsController::class)->group(function () {
     Route::get('/reports/create', "create");
     Route::get('/reports/{id}', "show");
     Route::post('/reports', "store");
-    Route::get('/reports/{id}/viewSale', "viewSale");
-    Route::get('/reports/{id}/viewOrder', "viewOrder");
+    Route::get('/reports/{sale}/viewSale', "viewSale");
+    Route::get('/reports/{order}/viewOrder', "viewOrder");
     Route::patch('/reports/{product}', "update");
     Route::delete('/reports/{id}', "destroy");
 })->middleware(['auth', 'verified'])->name('reports');

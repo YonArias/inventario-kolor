@@ -36,9 +36,6 @@ function BuscarProducto() {
     var price_product = document.getElementById('p_price')
     // Interactuar
     var amount = document.getElementById('s_amount')
-    
-    console.log(name_product.value)
-    console.log(name_product)
 
     fetch('/api/data')
     .then(response => response.json())
@@ -47,10 +44,8 @@ function BuscarProducto() {
         console.log(data);
 
         data.forEach(element => {
-            if (element.name.includes(name_product.value)) {
-                console.log(element)
+            if (element.name.includes(name_product.value.toUpperCase())) {
                 id_product.value = element.id
-                console.log(id_product.value)
                 name_product.value = element.name
                 amount_product.value = element.stock
                 price_product.value = element.price
@@ -71,7 +66,6 @@ function BuscarProducto() {
 }
 
 function MostrarTabla(table1, table2) {
-    console.log('ReporteVenta')
 
     var table_sale = document.getElementById(table1)
     var table_order = document.getElementById(table2)

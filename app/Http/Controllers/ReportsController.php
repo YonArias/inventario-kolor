@@ -66,17 +66,57 @@ class ReportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function viewSale(string $id)
+    public function viewSale(Sale $sale)
     {
-        
+        $detail = Sale_detail::get();
+        $user = User::find($sale->user_id);
+        $products = Product::get();
+
+        $voucher = 'NONE';
+
+        if ($sale->voucher_id == 1) {
+            $voucher = 'FACTURA';
+        }
+        if ($sale->voucher_id == 2) {
+            $voucher = 'BOLETA';
+        }
+
+        return view('reports_sale')->with([
+            'sale' => $sale,
+            'details' => $detail,
+            'user' => $user,
+            'products' => $products,
+            'voucher' => $voucher
+        ]);
     }
     /** 
      * Show the form for editing the specified resource.
      * 
     */
-    public function viewOrder(string $id)
+    public function viewOrder(Order $order)
     {
-        
+        $detail = Order_detail::get();
+        $user = User::find($order->user_id);
+        $supplier = Supplier::find($order->supplier_id);
+        $products = Product::get();
+
+        $voucher = 'NONE';
+
+        if ($order->voucher_id == 1) {
+            $voucher = 'FACTURA';
+        }
+        if ($order->voucher_id == 2) {
+            $voucher = 'BOLETA';
+        }
+
+        return view('reports_order')->with([
+            'order' => $order,
+            'details' => $detail,
+            'user' => $user,
+            'supplier' => $supplier,
+            'products' => $products,
+            'voucher' => $voucher
+        ]);
     }
 
     /**
